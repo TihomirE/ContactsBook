@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class='col-md-4'>
-            <app-contact-list></app-contact-list>
+            <app-contact-list [contacts]="contacts$ | async"></app-contact-list>
         </div>
         <div class='col-md-8'>
             <app-contact-details></app-contact-details>

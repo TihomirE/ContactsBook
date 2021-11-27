@@ -11,7 +11,7 @@ export class ContactsService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<IContact[]> {
+  getContacts(): Observable<IContact[]> {
     return this.http.get<IContact[]>(this.contactsUrl)
       .pipe(
         tap(data => console.log(JSON.stringify(data))),

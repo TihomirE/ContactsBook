@@ -1,1 +1,8 @@
-<p>contact-list works!</p>
+<div class="card-body" *ngIf="contacts">
+    <div class="list-group">
+        <button class="list-group-item list-group-item-action rounded-0" *ngFor="let contact of contacts">
+            <!-- [ngClass]="{'active': contact?.id === selectedContact?.id}" (click)="contactSelected(contact)" -->
+            {{ contact.first_name }} {{ contact.last_name }}
+        </button>
+    </div>
+</div>

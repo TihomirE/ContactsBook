@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { IContact } from '../IContact';
 
 @Component({
   selector: 'app-contact-list',
@@ -7,6 +8,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactListComponent implements OnInit {
+
+  @Input() contacts: IContact[] | null | undefined;
 
   constructor() { }
 

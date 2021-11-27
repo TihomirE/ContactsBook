@@ -9,7 +9,7 @@ const initialState: IContactState = {
     error: ''
 };
 
-export const productReducer = createReducer<IContactState>(
+export const contactReducer = createReducer<IContactState>(
     initialState,
     on(ContactApiActions.loadContactsSuccess, (state, action): IContactState => {
         return {
