@@ -2,11 +2,11 @@
   <div class="card-body">
     <h5 class="card-title">Contacts list</h5>
 
-    <table class="table table-hover" *ngIf="contacts">
+    <table class="table table-hover" [hidden]="!contacts">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First Name</th>
+          <th scope="col" id="first_name">First Name</th>
           <th scope="col">Last Name</th>
         </tr>
       </thead>

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ContactListComponent } from './contact-list.component';
 
 describe('ContactListComponent', () => {
@@ -8,9 +7,9 @@ describe('ContactListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactListComponent ]
+      declarations: [ContactListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,17 @@ describe('ContactListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render table title', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.card .card-body h5')?.textContent).toContain('Contacts list');
+  });
+  it('should render table head text', () => {
+    const compiled = fixture.debugElement.nativeElement.querySelector('#first_name');
+    expect(compiled.innerHTML).toContain('First Name');
+  });
+  // it('should have one contact in list', () => {
+  //   const compiled = fixture.debugElement.nativeElement.querySelector('#contacts');
+  //   expect(compiled.length).toBe(1);
+  // });
 });
