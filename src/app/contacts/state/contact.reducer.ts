@@ -1,7 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { IContact } from '../IContact';
 import { IContactState } from './IContactState';
-import * as ContactApiActions from './contact-api.actions'
+import * as ContactApiActions from './contact-api.actions';
+import * as ContactActions from './contact.actions';
 
 const initialState: IContactState = {
     currentContactId: null,
@@ -24,5 +25,11 @@ export const contactReducer = createReducer<IContactState>(
             contacts: [] as IContact[],
             error: action.error
         };
+    }),
+    on(ContactActions.setCurrentContact, (state, action): IContactState => {
+      return {
+        ...state,
+        currentContactId: action.currentContactId
+      };
     })
 )

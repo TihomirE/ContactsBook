@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IContact } from '../IContact';
 
 @Component({
@@ -7,13 +7,15 @@ import { IContact } from '../IContact';
   styleUrls: ['./contact-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactListComponent implements OnInit {
+export class ContactListComponent {
 
   @Input() contacts: IContact[] | null | undefined;
+  @Input() selectedContact: IContact | null | undefined;
 
-  constructor() { }
+  @Output() contactWasSelected = new EventEmitter<IContact>();
 
-  ngOnInit(): void {
+  contactSelected(contact: IContact): void {
+    this.contactWasSelected.emit(contact);
   }
 
 }

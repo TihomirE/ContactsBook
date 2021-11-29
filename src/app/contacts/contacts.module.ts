@@ -9,6 +9,7 @@ import { contactReducer } from "./state/contact.reducer";
 import { _contacts } from "./state/_contacts.enum";
 import { EffectsModule } from '@ngrx/effects';
 import { ContactsEffects } from "./state/contact.effects";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 const contactsRoutes: Routes = [
     { path: '', component: ContactsComponent }
@@ -24,7 +25,9 @@ const contactsRoutes: Routes = [
         CommonModule,
         RouterModule.forChild(contactsRoutes),
         StoreModule.forFeature(_contacts.contacts, contactReducer),
-        EffectsModule.forFeature([ContactsEffects])
+        EffectsModule.forFeature([ContactsEffects]),
+        FormsModule,
+        ReactiveFormsModule 
     ]
 })
 export class ContactsModule { }

@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let contact of contacts; index as i">
+        <tr *ngFor="let contact of contacts; index as i" [ngClass]="{'selected': contact?.id === selectedContact?.id}" (click)="contactSelected(contact)">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ contact.first_name }}</td>
           <td>{{ contact.last_name }}</td>

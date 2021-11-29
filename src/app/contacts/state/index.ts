@@ -1,5 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import * as AppState from '../../state/app.state';
+import { IContact } from '../IContact';
 import { IContactState } from './IContactState';
 import { _contacts } from './_contacts.enum';
 

@@ -10,10 +10,10 @@ export class ContactsEffects {
 
     constructor(private actions$: Actions, private contactsService: ContactsService) { }
 
-    loadProducts$ = createEffect(() => {
+    loadContacts$ = createEffect(() => {
         return this.actions$
             .pipe(
-                ofType(ContactActions.loadProducts),
+                ofType(ContactActions.loadContacts),
                 mergeMap(() => this.contactsService.getContacts()
                     .pipe(
                         map(contacts => ContactApiActions.loadContactsSuccess({ contacts })),
