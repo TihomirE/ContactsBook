@@ -21,6 +21,14 @@ export class ContactsComponent implements OnInit {
     this.store.dispatch(ContactActions.setCurrentContact({ currentContactId: contact.id }));
   }
 
+  newContact(): void {
+    this.store.dispatch(ContactActions.initializeNewContact());
+  }
+
+  saveContact(contact: IContact): void {
+    this.store.dispatch(ContactActions.createContact({ contact }));
+  }
+
   ngOnInit(): void {
     this.contacts$ = this.store.select(getContacts);
 

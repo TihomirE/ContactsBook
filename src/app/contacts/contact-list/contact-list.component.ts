@@ -13,9 +13,14 @@ export class ContactListComponent {
   @Input() selectedContact: IContact | null | undefined;
 
   @Output() contactWasSelected = new EventEmitter<IContact>();
+  @Output() initializeNewContact = new EventEmitter<void>();
 
   contactSelected(contact: IContact): void {
     this.contactWasSelected.emit(contact);
+  }
+
+  newContact(): void {
+    this.initializeNewContact.emit();
   }
 
 }

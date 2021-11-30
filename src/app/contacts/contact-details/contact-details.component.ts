@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { IContact } from '../IContact';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -14,6 +14,8 @@ export class ContactDetailsComponent implements OnChanges {
 
   @Input() selectedContact: IContact | null | undefined;
 
+  @Output() createContact = new EventEmitter<IContact>();
+
   // initializing the form here
   contactForm: FormGroup = this.fb.group({
     first_name: [{ value: '', disabled: true }],
@@ -27,8 +29,7 @@ export class ContactDetailsComponent implements OnChanges {
 
   displayContact(contact: IContact | null): void {
     if (contact && this.contactForm) {
-      // Reset the form back to pristine
-      this.contactForm.reset();
+      this.dynamicFormReset(contact);
       // set appropriate title
       this.setTitle(contact.id);
       // Update the data on the form
@@ -36,11 +37,25 @@ export class ContactDetailsComponent implements OnChanges {
     }
   }
 
+  dynamicFormReset(contact: IContact) {
+    // Reset the form back to pristine and controls to disabled
+    this.contactForm.reset();
+    this.contactForm.disable();
+    if (contact.id === 0) {
+      // enable inputs if new user
+      this.contactForm.controls['first_name'].enable();
+      this.contactForm.controls['last_name'].enable();
+      this.contactForm.controls['phone'].enable();
+      this.contactForm.controls['email'].enable();
+      this.contactForm.controls['address'].enable();
+    }
+  }
+
   setTitle(contactId: number) {
     this.title = contactId === 0 ? 'Add new contact' : 'Contact details'
   }
 
-  patchForm(contact: IContact) {    
+  patchForm(contact: IContact) {
     this.contactForm.patchValue({
       first_name: contact.first_name,
       last_name: contact.last_name,
@@ -50,8 +65,12 @@ export class ContactDetailsComponent implements OnChanges {
     });
   }
 
-  // TODO >> as the same form will be used for data show and add new
-  saveContact() {}
+  saveContact() {
+    // This ensures values not on the form, such as the Id, are retained
+    const contact = { ...this.selectedContact, ...this.contactForm.value };
+
+    this.createContact.emit(contact);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     // patch form with value from the store

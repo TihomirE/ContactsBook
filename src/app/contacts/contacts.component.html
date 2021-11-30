@@ -1,11 +1,15 @@
 <div class="container">
     <div class="row">
         <div class='col-md-4'>
-            <app-contact-list [contacts]="contacts$ | async" [selectedContact]="selectedContact$ | async" (contactWasSelected)="contactSelected($event)">
+            <app-contact-list   [contacts]="contacts$ | async" 
+                                [selectedContact]="selectedContact$ | async" 
+                                (contactWasSelected)="contactSelected($event)"
+                                (initializeNewContact)="newContact()">
             </app-contact-list>
         </div>
         <div class='col-md-8'>
-            <app-contact-details [selectedContact]="selectedContact$ | async"></app-contact-details>
+            <app-contact-details    [selectedContact]="selectedContact$ | async"
+                                    (createContact)="saveContact($event)"></app-contact-details>
         </div>
     </div>
 </div>

@@ -1,7 +1,14 @@
 <div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-8">Contacts list</div>
+      <div class="col-md-4">
+        <button class="btn btn-info btn-sm btn-block" (click)="newContact()">Add</button>
+      </div>
+    </div>
+  </div>
   <div class="card-body">
-    <h5 class="card-title">Contacts list</h5>
-
+    
     <table class="table table-hover" [hidden]="!contacts">
       <thead>
         <tr>

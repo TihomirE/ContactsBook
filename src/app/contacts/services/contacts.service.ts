@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap, catchError, throwError } from 'rxjs';
 import { IContact } from '../IContact';
@@ -19,7 +19,16 @@ export class ContactsService {
       );
   }
 
-
+  createContact(contact: IContact): Observable<IContact> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // Contact Id must be null for the Web API to assign an Id
+    const newContact = { ...contact, id: null };
+    return this.http.post<IContact>(this.contactsUrl, newContact, { headers })
+      .pipe(
+        tap(data => console.log('createContact: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
 
 
   // basic error handling (logging) 
