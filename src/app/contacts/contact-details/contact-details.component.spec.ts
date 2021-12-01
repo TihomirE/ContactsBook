@@ -24,4 +24,8 @@ describe('ContactDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // it('should render table title', () => {
+  //   const compiled = fixture.nativeElement as HTMLElement;
+  //   expect(compiled.querySelector('.card .card-header')?.textContent).toContain('Contact details');
+  // });
 });

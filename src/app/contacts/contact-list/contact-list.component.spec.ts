@@ -26,6 +26,10 @@ describe('ContactListComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.card .card-header .row .col-md-8')?.textContent).toContain('Contacts list');
   });
+  it('button Add should exist', () => {
+    const compiled = fixture.debugElement.nativeElement.querySelector('#add_button');
+    expect(compiled.innerHTML).toContain('Add');
+  });
   it('should render table head text', () => {
     const compiled = fixture.debugElement.nativeElement.querySelector('#first_name');
     expect(compiled.innerHTML).toContain('First Name');
