@@ -24,7 +24,7 @@ describe('ContactListComponent', () => {
 
   it('should render table title', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.card .card-body h5')?.textContent).toContain('Contacts list');
+    expect(compiled.querySelector('.card .card-header .row .col-md-8')?.textContent).toContain('Contacts list');
   });
   it('should render table head text', () => {
     const compiled = fixture.debugElement.nativeElement.querySelector('#first_name');

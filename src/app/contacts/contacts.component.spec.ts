@@ -4,6 +4,9 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { IContact } from './IContact';
 import { IContactState } from './state/IContactState';
 import { By } from '@angular/platform-browser';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { ContactDetailsComponent } from './contact-details/contact-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ContactsComponent', () => {
   let component: ContactsComponent;
@@ -24,10 +27,11 @@ describe('ContactsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ContactsComponent],
+      declarations: [ContactsComponent, ContactListComponent, ContactDetailsComponent],
       providers: [
         provideMockStore({ initialState }),
-      ]
+      ],
+      imports: [ ReactiveFormsModule ]
     })
       .compileComponents();
   });
