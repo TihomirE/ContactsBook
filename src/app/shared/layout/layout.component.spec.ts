@@ -24,8 +24,6 @@ describe('LayoutComponent', () => {
   });
 
   it('should render title', () => {
-    const fixture = TestBed.createComponent(LayoutComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('#navbar-title')?.textContent).toContain('Welcome to Contacts Book');
   });
