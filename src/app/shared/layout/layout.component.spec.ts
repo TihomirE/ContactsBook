@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { LayoutComponent } from './layout.component';
@@ -7,25 +7,23 @@ describe('LayoutComponent', () => {
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LayoutComponent ],
-      imports: [ RouterTestingModule ]
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [LayoutComponent],
+      imports: [RouterTestingModule]
     })
-    .compileComponents();
-  });
+      .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-    it('should render title', () => {
+  it('should render title', () => {
     const fixture = TestBed.createComponent(LayoutComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
